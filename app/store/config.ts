@@ -1,5 +1,5 @@
 import { LLMModel } from "../client/api";
-import { DalleSize, DalleQuality, DalleStyle } from "../typing";
+import { DalleQuality, DalleStyle, ModelSize } from "../typing";
 import { getClientConfig } from "../config/client";
 import {
   DEFAULT_INPUT_TEMPLATE,
@@ -15,6 +15,7 @@ import {
   ServiceProvider,
 } from "../constant";
 import { createPersistStore } from "../utils/store";
+import type { Voice } from "rt-client";
 
 export type ModelType = (typeof DEFAULT_MODELS)[number]["name"];
 export type TTSModelType = (typeof DEFAULT_TTS_MODELS)[number];
@@ -45,12 +46,14 @@ export const DEFAULT_CONFIG = {
   fontSize: 14,
   fontFamily: "",
   theme: Theme.Auto as Theme,
-  tightBorder: !!config?.isApp,
+  tightBorder: true,
   sendPreviewBubble: true,
   enableAutoGenerateTitle: true,
   sidebarWidth: DEFAULT_SIDEBAR_WIDTH,
 
   enableArtifacts: true, // show artifacts config
+
+  enableCodeFold: true, // code fold config
 
   disablePromptHint: false,
 
@@ -61,21 +64,21 @@ export const DEFAULT_CONFIG = {
   models: DEFAULT_MODELS as any as LLMModel[],
 
   modelConfig: {
-    model: "gpt-4o-mini" as ModelType,
+    model: "gpt-4o" as ModelType,
     providerName: "OpenAI" as ServiceProvider,
-    temperature: 0.5,
+    temperature: 0.4,
     top_p: 1,
-    max_tokens: 4000,
+    max_tokens: 50000,
     presence_penalty: 0,
     frequency_penalty: 0,
     sendMemory: true,
-    historyMessageCount: 4,
+    historyMessageCount: 5,
     compressMessageLengthThreshold: 1000,
     compressModel: "",
     compressProviderName: "",
     enableInjectSystemPrompts: true,
     template: config?.template ?? DEFAULT_INPUT_TEMPLATE,
-    size: "1024x1024" as DalleSize,
+    size: "1024x1024" as ModelSize,
     quality: "standard" as DalleQuality,
     style: "vivid" as DalleStyle,
   },
@@ -88,12 +91,26 @@ export const DEFAULT_CONFIG = {
     voice: DEFAULT_TTS_VOICE,
     speed: 1.0,
   },
+
+  realtimeConfig: {
+    enable: false,
+    provider: "OpenAI" as ServiceProvider,
+    model: "gpt-4o-realtime-preview-2024-10-01",
+    apiKey: "",
+    azure: {
+      endpoint: "",
+      deployment: "",
+    },
+    temperature: 0.9,
+    voice: "alloy" as Voice,
+  },
 };
 
 export type ChatConfig = typeof DEFAULT_CONFIG;
 
 export type ModelConfig = ChatConfig["modelConfig"];
 export type TTSConfig = ChatConfig["ttsConfig"];
+export type RealtimeConfig = ChatConfig["realtimeConfig"];
 
 export function limitNumber(
   x: number,
