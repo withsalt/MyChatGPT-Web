@@ -64,8 +64,8 @@ export const DEFAULT_CONFIG = {
   models: DEFAULT_MODELS as any as LLMModel[],
 
   modelConfig: {
-    model: "o1-mini" as ModelType,
-    providerName: "OpenAI" as ServiceProvider,
+    model: "gemini-exp-1206" as ModelType,
+    providerName: "Google" as ServiceProvider,
     temperature: 0.4,
     top_p: 1,
     max_tokens: 50000,
