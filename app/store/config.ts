@@ -64,8 +64,8 @@ export const DEFAULT_CONFIG = {
   models: DEFAULT_MODELS as any as LLMModel[],
 
   modelConfig: {
-    model: "gemini-exp-1206" as ModelType,
-    providerName: "Google" as ServiceProvider,
+    model: "chatgpt-4o-latest" as ModelType,
+    providerName: "OpenAI" as ServiceProvider,
     temperature: 0.4,
     top_p: 1,
     max_tokens: 50000,
