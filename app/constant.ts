@@ -565,6 +565,7 @@ const bytedanceModels = [
   "Doubao-pro-4k",
   "Doubao-pro-32k",
   "Doubao-pro-128k",
+  "deepseek-v3-241226"
 ];
 
 const alibabaModes = [
@@ -695,6 +696,17 @@ export const DEFAULT_MODELS = [
       providerType: "siliconflow",
       sorted: 14,
     },
+  })),
+  ...bytedanceModels.map((name) => ({
+      name,
+      available: true,
+      sorted: seq++,
+      provider: {
+          id: "bytedance",
+          providerName: "ByteDance",
+          providerType: "bytedance",
+          sorted: 6,
+      },
   })),
 ] as const;
 
