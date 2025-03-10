@@ -1463,6 +1463,7 @@ function _Chat() {
           key?: string;
           url?: string;
           google_api_key?: string;
+          bytedance_api_key?: string;
         };
 
         console.log("[Command] got settings from url: ", payload);
