@@ -1467,19 +1467,22 @@ function _Chat() {
 
         console.log("[Command] got settings from url: ", payload);
 
-        if (payload.key || payload.url || payload.google_api_key) {
-            if (payload.key) {
-              accessStore.update(
-                (access) => (access.openaiApiKey = payload.key!),
-              );
-            }
-            if (payload.url) {
-              accessStore.update((access) => (access.openaiUrl = payload.url!));
-            }
-            if (payload.google_api_key) {
-                accessStore.update((access) => (access.googleApiKey = payload.google_api_key!));
-            }
-            accessStore.update((access) => (access.useCustomConfig = true));
+        if (payload.key || payload.url || payload.google_api_key || payload.bytedance_api_key) {
+          if (payload.key) {
+            accessStore.update(
+              (access) => (access.openaiApiKey = payload.key!),
+            );
+          }
+          if (payload.url) {
+            accessStore.update((access) => (access.openaiUrl = payload.url!));
+          }
+          if (payload.google_api_key) {
+              accessStore.update((access) => (access.googleApiKey = payload.google_api_key!));
+          }
+          if (payload.bytedance_api_key) {
+              accessStore.update((access) => (access.bytedanceApiKey = payload.bytedance_api_key!));
+          }
+          accessStore.update((access) => (access.useCustomConfig = true));
         }
       } catch {
         console.error("[Command] failed to get settings from url: ", text);
