@@ -587,7 +587,8 @@ const bytedanceModels = [
   "Doubao-pro-4k",
   "Doubao-pro-32k",
   "Doubao-pro-128k",
-  "deepseek-r1-250120"
+  "deepseek-r1-250528",
+  "deepseek-v3-250324",
 ];
 
 const alibabaModes = [
