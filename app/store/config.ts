@@ -64,7 +64,7 @@ export const DEFAULT_CONFIG = {
   models: DEFAULT_MODELS as any as LLMModel[],
 
   modelConfig: {
-    model: "chatgpt-4o-latest" as ModelType,
+    model: "gpt-4.1" as ModelType,
     providerName: "OpenAI" as ServiceProvider,
     temperature: 0.4,
     top_p: 1,
