@@ -64,8 +64,8 @@ export const DEFAULT_CONFIG = {
   models: DEFAULT_MODELS as any as LLMModel[],
 
   modelConfig: {
-    model: "gpt-4.1" as ModelType,
-    providerName: "OpenAI" as ServiceProvider,
+    model: "deepseek-r1-250528" as ModelType,
+    providerName: "ByteDance" as ServiceProvider,
     temperature: 0.4,
     top_p: 1,
     max_tokens: 16384,
